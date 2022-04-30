@@ -145,7 +145,10 @@ def perform_eda(data_df):
     plt.close()
 
     plt.figure(figsize=(20, 10))
-    sns.scatterplot(data=data_df, x='Avg_Open_To_Buy', y='Avg_Utilization_Ratio')
+    sns.scatterplot(
+        data=data_df,
+        x='Avg_Open_To_Buy',
+        y='Avg_Utilization_Ratio')
     plt.title('Avg Open To Buy vs Avg Utilization Ratio')
     plt.savefig('./images/scatter_open_to_buy_utilization.jpeg')
     plt.close()
@@ -190,10 +193,10 @@ def perform_feature_engineering(data_df, response):
     '''
 
     y = data_df[response]
-
+    
     # train test split
     X_train, X_test, y_train, y_test = train_test_split(
-        data_df.drop(columns=[response]), y, test_size=0.3, random_state=42)
+        data_df, y, test_size=0.3, random_state=42)
 
     # Prevents data leakage
     X_train = encoder_helper(X_train, CAT_COLUMNS, response)
@@ -357,7 +360,7 @@ def train_models(X_train, X_test, y_train, y_test):
     plt.figure(figsize=(15, 8))
     ax = plt.gca()
     _ = plot_roc_curve(cv_rfc.best_estimator_,
-                              X_test, y_test, ax=ax, alpha=0.8)
+                       X_test, y_test, ax=ax, alpha=0.8)
     lrc_plot.plot(ax=ax, alpha=0.8)
     plt.savefig('./images/models_roc_curve_comparison.jpeg')
     plt.close()

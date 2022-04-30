@@ -71,7 +71,7 @@ def rfc_model():
     return joblib.load('./mock/rfc_model.pkl')
 
 
-def test_import():
+def test_import_data():
     '''
     test data import
     '''
@@ -83,7 +83,7 @@ def test_import():
         raise err
 
     try:
-        assert data_df.shape > 0 and data_df.shape[1] > 0
+        assert data_df.shape[0] > 0 and data_df.shape[1] > 0
     except AssertionError as err:
         logging.error(
             "Testing import_data: The file doesn't appear to have rows and columns")
@@ -165,7 +165,7 @@ def test_perform_feature_engineering(data, response):
         assert X_train.shape[0] > 0 and X_train.shape[1] > 1
         assert X_test.shape[0] > 0 and X_test.shape[1] > 1
         assert y_train.shape[0] > 0
-        assert y_train.shape[0] > 0
+        assert y_test.shape[0] > 0
         logging.info("Testing perform_feature_engineering: SUCCESS")
     except AssertionError as err:
         logging.error(
@@ -234,7 +234,8 @@ def test_feature_importance_plot(rfc_model, train_test_data):
         os.remove(file)
 
     try:
-        cl.feature_importance_plot(rfc_model, data_input, output_pth='./images')
+        cl.feature_importance_plot(
+            rfc_model, data_input, output_pth='./images')
 
         for plot_path in plots_paths:
             assert os.path.isfile('./images/' + plot_path)
