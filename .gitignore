@@ -59,6 +59,7 @@ coverage.xml
 images/*
 models/*
 
+
 # Django stuff:
 *.log
 local_settings.py
