@@ -56,9 +56,8 @@ coverage.xml
 *.pot
 *.pkl
 *.jpeg
-images/*
-models/*
-
+models/*.pkl
+images/*.jpeg
 
 # Django stuff:
 *.log

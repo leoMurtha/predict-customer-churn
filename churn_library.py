@@ -14,6 +14,7 @@ import shap
 import joblib
 import pandas as pd
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import plot_roc_curve, classification_report
@@ -23,6 +24,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
 sns.set()
+# Non interactive mode
+matplotlib.use('Agg')
 
 logging.basicConfig(
     filename='./logs/churn_library.log',
@@ -394,7 +397,7 @@ def predict(model, X_data, output_pth):
     return pred_df
 
 
-if __name__ == 'main':
+if __name__ == "__main__":
     data_df = import_data('./data/bank_data.csv')
     data_df = preprocess_data(data_df)
     perform_eda(data_df)

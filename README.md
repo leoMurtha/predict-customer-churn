@@ -54,10 +54,9 @@ First install requirements with requirements_version.txt files provided.
 >
 > **To test the project:**
 >
-> pytest churn_script_logging_and_tests.pychurn_library.py
+> pytest churn_script_logging_and_tests.py
 >
 > *It runs the automated tests for the helper functions of the pipelinel, everything test should pass otherwise the project is broken.*
-
 
 ## PEP-8/Pylint
 
