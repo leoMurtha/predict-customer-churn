@@ -54,6 +54,10 @@ coverage.xml
 # Translations
 *.mo
 *.pot
+*.pkl
+*.jpeg
+models/*.pkl
+images/*.jpeg
 
 # Django stuff:
 *.log
